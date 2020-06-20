@@ -72,16 +72,14 @@ class MainPage extends React.Component {
   }
 
   filter = (e) => {
-    const posts = this.state.posts;
     const filterValue = e.target.value;
-    const filteredUsers = this.state.users.filter(user => user.name.indexOf(filterValue) === 0);
+    const filteredUsers = this.state.users.filter(user => user.name.toLowerCase().indexOf(filterValue.toLowerCase()) === 0);
     const filteredIdUsers = filteredUsers.map(user => user.id);
     console.dir(filteredIdUsers);
     const filteredPosts = this.state.posts.filter(post => filteredIdUsers.includes(post.userId));
     this.setState({
       filteredPosts
     })
-    // posts.filter(post=> post.userId ===)
   }
 
   render() {
